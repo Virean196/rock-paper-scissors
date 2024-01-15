@@ -1,17 +1,21 @@
+let gameArea = document.getElementById("gameArea");
+let rockBtn = document.getElementById("rockBtn");
+let paperBtn = document.getElementById("paperBtn");
+let scissorsBtn = document.getElementById("scissorsBtn");
+let score = document.getElementById("score");
+let playerScore = 0, computerScore = 0;
 let roundWinner;
+let playersChoice;
 
 function getComputerChoice(){
     const randomNumber = Math.floor(Math.random()*3) + 1;
     switch (randomNumber){
         case 1:
             return "Rock";
-            break;
         case 2:
             return "Paper";
-            break;
         case 3:
             return "Scissors";
-            break;
     }
 }
 
@@ -44,20 +48,16 @@ function playRound(playersChoice, computersChoice){
     }
 }
 
-function game(){
-    let playerScore = 0, computerScore = 0;
-    for(let i = 0; i<5; i++){
-        let playersChoise = prompt("Choose rock, paper or scissors!");
-        playRound(playersChoise, getComputerChoice());
-        if(roundWinner == "player"){
-            playerScore++;
-        }
-        else if(roundWinner == "computer"){
-            computerScore++;
-        }
-        console.log("Player score: " + playerScore);
-        console.log("Computer Score: " + computerScore);
+function round(){
+    playRound(playersChoice, getComputerChoice());
+    if(roundWinner == "player"){
+        playerScore++;
     }
+    else if(roundWinner == "computer"){
+        computerScore++;
+    }
+    console.log("Player score: " + playerScore);
+    console.log("Computer Score: " + computerScore);
     if(playerScore>computerScore){
         console.log("Player wins " + playerScore + " - " + computerScore);
     }
@@ -67,6 +67,44 @@ function game(){
     else{
         console.log("Its a draw " + playerScore + " - " + computerScore);
     }
+    checkScore();
 }
 
-game();
+function checkScore(){
+    score.innerText = (playerScore + " : " + computerScore);
+    if (playerScore == 5){
+        score.innerText = ("Player Wins!");
+        rockBtn.onclick = resetScore();
+        paperBtn.onclick = resetScore();
+        scissorsBtn.onclick = resetScore();
+    }
+    else if(computerScore == 5){
+        score.innerText = ("Computer Wins!");
+        rockBtn.onclick = resetScore();
+        paperBtn.onclick = resetScore();
+        scissorsBtn.onclick = resetScore();
+    }
+}
+
+function resetScore(){
+    playerScore = 0;
+    computerScore = 0;
+}
+
+rockBtn.addEventListener('click', function(){
+    playersChoice = "rock";
+    round();
+    return playersChoice;
+})
+
+paperBtn.addEventListener('click', function(){
+    playersChoice = "paper";
+    round();
+    return playersChoice;
+})
+
+scissorsBtn.addEventListener('click', function(){
+    playersChoice = "scissors";
+    round();
+    return playersChoice;
+})
