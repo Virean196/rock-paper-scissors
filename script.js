@@ -1,8 +1,10 @@
-let gameArea = document.getElementById("gameArea");
+let buttonArea = document.getElementById("buttonArea");
 let rockBtn = document.getElementById("rockBtn");
 let paperBtn = document.getElementById("paperBtn");
 let scissorsBtn = document.getElementById("scissorsBtn");
 let score = document.getElementById("score");
+let choices = document.getElementById("choices");
+let test = document.getElementById("test");
 let playerScore = 0, computerScore = 0;
 let roundWinner;
 let playersChoice;
@@ -20,6 +22,9 @@ function getComputerChoice(){
 }
 
 function playRound(playersChoice, computersChoice){
+    choices.innerHTML = "<h1>" + playersChoice.charAt(0).toUpperCase() + playersChoice.slice(1) + " vs " + computersChoice + "</h1>"
+    // choices.appendChild(playerImg);
+    // choices.appendChild(computerImg);
     console.log(playersChoice.charAt(0).toUpperCase() + playersChoice.slice(1) + " vs " + computersChoice);
     if(playersChoice.toLowerCase() == "scissors" && computersChoice == "paper"){
         console.log("You win! " + playersChoice.charAt(0).toUpperCase() + playersChoice.slice(1) + " beats " + computersChoice);

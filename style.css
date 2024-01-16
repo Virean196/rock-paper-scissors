@@ -1,3 +1,36 @@
+body{
+    padding: 0;
+    border: 0;
+    margin: 0;
+    background: whitesmoke;
+}
+
 .hidden{
     display:none;
+}
+
+#gameBoard{
+    padding-top: 50px;
+}
+
+#buttonArea{
+    display:flex;
+    align-content: center;
+    justify-content: center;
+    padding:10px;
+    gap:35px;
+}
+
+.gameButtons{
+    height: 100px;
+    width: 150px;
+    font-size: 32px;
+}
+
+#scoreArea{
+    text-align: center;
+}
+
+.centeredText{
+    text-align: center;
 }
