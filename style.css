@@ -22,15 +22,24 @@ body{
 }
 
 .gameButtons{
-    height: 100px;
     width: 150px;
-    font-size: 32px;
+    height:150px;
+    position:relative;
+}
+
+.vsBtn{
+    position:relative;
+    height: 150px;
 }
 
 #scoreArea{
     text-align: center;
 }
 
-.centeredText{
-    text-align: center;
+#choices{
+    width:50%;
+    margin:auto;
+    display: flex;
+    justify-content: space-evenly;
+    max-width: 600px;
 }
